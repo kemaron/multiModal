@@ -10,14 +10,13 @@
 	*  Dodaję klasę 'show' do overlaya
 	*/ 
 
-	function showModal(clickModal){		
+	function showModal (clickModal){		
 		var modals = document.querySelectorAll('.modal');	
 		for(var i = 0; i < modals.length; i++){
 			modals[i].classList.remove('show');
 		}			
 	document.querySelector('#modal-overlay').classList.add('show');
-	document.querySelector(clickModal).classList.add('show');	
-	}
+	document.querySelector(clickModal).classList.add('show');		}
 	
 	// Mimo, że obecnie mamy tylko jeden link, stosujemy kod dla wielu linków. W ten sposób nie będzie trzeba go zmieniać, kiedy zechcemy mieć więcej linków lub guzików otwierających modale
 	
