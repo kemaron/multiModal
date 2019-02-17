@@ -1,42 +1,48 @@
+/* eslint-disable func-names */
+/* eslint-disable no-redeclare */
 'use strict';
-(function(){ 
-	/* W kodzie HTML i CSS dodaliśmy style dla prostego modala, który będzie zawsze wyśrodkowany w oknie. 
-	
-	Teraz wystarczy napisać funkcję otwierającą modal:
-	*/	
-	
-	/* Usuwam klasę 'show' ze wszystkich modali
-	*   Dodaję klasę 'show' do klikniętego modala
-	*  Dodaję klasę 'show' do overlaya
-	*/ 
+(function() {
 
-	function showModal (clickModal){		
-		var modals = document.querySelectorAll('.modal');	
-		for(var i = 0; i < modals.length; i++){
-			modals[i].classList.remove('show');
-		}			
-	document.querySelector('#modal-overlay').classList.add('show');
-	document.querySelector(clickModal).classList.add('show');		}
+	/*
+	 * w kodzie HTML i CSS dodaliśmy style dla prostego modala, który będzie zawsze wyśrodkowany w oknie. 
+	 *
+	 * Teraz wystarczy napisać funkcję otwierającą modal:
+	 */	
 	
+	/*
+	 * Jeśli jakiś modal ma klasę 'show' to ją usuwam
+	 * Dodaję klasę 'show' do klikniętego modala
+	 * Dodaję klasę 'show' do overlaya
+	 */ 
+
+	function showModal (clickModal) {	
+		
+		if (document.querySelector ('.modal' && '.show') != null) {
+			document.querySelector ('.modal' && '.show').classList.remove('show');
+		}	
+			
+		document.querySelector('#modal-overlay').classList.add('show');
+		document.querySelector(clickModal).classList.add('show');
+	}
 	// Mimo, że obecnie mamy tylko jeden link, stosujemy kod dla wielu linków. W ten sposób nie będzie trzeba go zmieniać, kiedy zechcemy mieć więcej linków lub guzików otwierających modale
 	
 	var modalLinks = document.querySelectorAll('.show-modal');
 
 	// Na zdarzeniu Click ustawiam funkcje 'showMOdal z wartością z atrybutu Href, gdyż taką samą wartość ma id modala
-	for(var i = 0; i < modalLinks.length; i++){
+	for(var i = 0; i < modalLinks.length; i++) {
 		modalLinks[i].addEventListener('click', function() { showModal(this.getAttribute('href'))});		
 	}	
 	
 	// Dodajemy też funkcję zamykającą modal, oraz przywiązujemy ją do kliknięć na elemencie z klasą "close". 
 
-	var hideModal = function(event){
+	var hideModal = function(event) {
 		event.preventDefault();
 		document.querySelector('#modal-overlay').classList.remove('show');		
 	};
 	
 	var closeButtons = document.querySelectorAll('.modal .close');
 	
-	for(var i = 0; i < closeButtons.length; i++){
+	for(var i = 0; i < closeButtons.length; i++) {
 		closeButtons[i].addEventListener('click', hideModal);
 	}
 	
@@ -48,16 +54,9 @@
 	
 	var modals = document.querySelectorAll('.modal');
 	
-	for(var i = 0; i < modals.length; i++){
-		modals[i].addEventListener('click', function(event){
+	for(var i = 0; i < modals.length; i++) {
+		modals[i].addEventListener('click', function(event) {
 			event.stopPropagation();
 		});
 	}
-	
-	/* I to wszystko - mamy już działający modal! 
-	
-	ĆWICZENIE: 
-	Zmień funkcję showModal tak, aby w momencie wyświetlania była zmieniana treść nagłówka na dowolną inną, np. "Modal header". 
-	*/
-	
 }()); 
