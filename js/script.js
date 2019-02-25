@@ -17,8 +17,8 @@
 
 	function showModal (clickModal) {	
 		
-		if (document.querySelector ('.modal' && '.show') != null) {
-			document.querySelector ('.modal' && '.show').classList.remove('show');
+		if (document.querySelector ('.modal.show') != null) {
+			document.querySelector ('.modal.show').classList.remove('show');
 		}	
 			
 		document.querySelector('#modal-overlay').classList.add('show');
